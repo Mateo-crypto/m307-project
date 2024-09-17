@@ -9,12 +9,36 @@ const app = createApp({
 });
 
 /* Startseite */
-app.get("/", async function (req, res) {
-  res.render("start", {});
+app.get("/post", async function (req, res) {
+  res.render("post", {});
 });
 
-app.get("/impressum", async function (req, res) {
-  res.render("impressum", {});
+app.get("/", async function (req, res) {
+  res.render("home", {});
+});
+
+app.get("/home", async function (req, res) {
+  res.render("home", {});
+});
+
+app.get("/savepost", async function (req, res) {
+  res.render("savepost", {});
+});
+
+app.get("/newpost", async function (req, res) {
+  res.render("newpost", {});
+});
+
+app.get("/account", async function (req, res) {
+  res.render("account", {});
+});
+
+app.get("/login", async function (req, res) {
+  res.render("login_register", {});
+});
+
+app.get("/register", async function (req, res) {
+  res.render("login_register", {});
 });
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
