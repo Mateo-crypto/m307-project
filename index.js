@@ -1,24 +1,21 @@
 import { createApp } from "./config.js";
 
 const app = createApp({
-  user: "autumn_star_7622",
-  host: "168.119.168.41",
-  database: "demo",
-  password: "uaioysdfjoysfdf",
-  port: 18324,
+  user: "fragrant_tree_7413",
+  host: "bbz.cloud",
+  database: "fragrant_tree_7413",
+  password: "480154dbe6eebef9db21cb22f74e8f3e",
+  port: 30211,
+});
+
+app.get("/", async function (req, res) {
+  const posts = await app.locals.pool.query("select * from posts");
+  res.render("home", { posts: posts.rows });
 });
 
 /* Startseite */
 app.get("/post", async function (req, res) {
   res.render("post", {});
-});
-
-app.get("/", async function (req, res) {
-  res.render("home", {});
-});
-
-app.get("/home", async function (req, res) {
-  res.render("home", {});
 });
 
 app.get("/savepost", async function (req, res) {
@@ -39,6 +36,10 @@ app.get("/login", async function (req, res) {
 
 app.get("/register", async function (req, res) {
   res.render("login_register", {});
+});
+
+app.get("/impressum", async function (req, res) {
+  res.render("impressum", {});
 });
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */

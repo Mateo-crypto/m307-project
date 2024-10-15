@@ -1,11 +1,11 @@
 {{>header}}
-
 <div class="startseite">
-<h1>Hallo Welt!</h1>
 
-<p>Willkommen auf meiner Website. Hier wird in Kürze eine interaktive Webapplikation entstehen. Viel Vergnügen!</p>
+    {{#posts}}
 
-<img src="construction.gif" width="200">
-
-{{> contactform}}
-</div>
+<section class="home-restaurant-grid">
+    <container class="restaurant-grid">
+        <p class="title-restaurant">{{name}}</p>
+    </container>
+</section>
+{{/posts}}
