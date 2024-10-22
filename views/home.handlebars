@@ -1,11 +1,14 @@
 {{>header}}
 <div class="startseite">
 
-    {{#posts}}
 
 <section class="home-restaurant-grid">
+    {{#posts}}
+    <a href="/post/{{id}}">
     <container class="restaurant-grid">
-        <p class="title-restaurant">{{name}}</p>
+        <h2 class="title-restaurant">{{name}}</h2>
+        <img src="/uploads/images/IMG_0899.JPEG" width="100%" height="auto" alt="bildessen">
     </container>
+    {{/posts}}
 </section>
-{{/posts}}
+</a>

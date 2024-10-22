@@ -14,8 +14,11 @@ app.get("/", async function (req, res) {
 });
 
 /* Startseite */
-app.get("/post", async function (req, res) {
-  res.render("post", {});
+app.get("/post/:id", async function (req, res) {
+  const posts = await app.locals.pool.query(
+    `select * from posts WHERE id = ${req.params.id}`
+  );
+  res.render("post", { posts: posts.rows });
 });
 
 app.get("/savepost", async function (req, res) {
