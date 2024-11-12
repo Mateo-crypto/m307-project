@@ -34,11 +34,11 @@ app.get("/account", async function (req, res) {
 });
 
 app.get("/login", async function (req, res) {
-  res.render("login_register", {});
+  res.render("login", {});
 });
 
 app.get("/register", async function (req, res) {
-  res.render("login_register", {});
+  res.render("register", {});
 });
 
 app.get("/impressum", async function (req, res) {

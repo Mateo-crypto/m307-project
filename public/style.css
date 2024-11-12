@@ -143,13 +143,23 @@ textarea::placeholder,
 select::placeholder,
 button::placeholder {
   color: #000000;
-  padding: 10px;
 }
 input[type="file"] {
-  height: 300px;
-  background-color: #68d0e7;
+  display: none;
 }
-s button {
+
+.left-column {
+  height: 300px;
+  width: 100%;
+  background-color: #68d0e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: solid #68d0e7;
+}
+
+button {
   background-color: #68d0e7;
   color: white;
   cursor: pointer;
