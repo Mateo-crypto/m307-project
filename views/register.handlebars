@@ -1,9 +1,14 @@
+{{>header}}
 <h2>Registrieren</h2>
 
 <form action="/register" method="POST">
   E-Mail:
-  <input name="username" type="text" /><br />
+  <input name="email" type="text" /><br />
+  Vorname:
+  <input name="vorname" type="text" /><br />
+  Nachname:
+  <input name="nachname" type="text" /><br />
   Passwort:
-  <input name="password" type="password" /><br />
+  <input name="passwort" type="password" /><br />
   <input type="submit" value="Registrieren" />
 </form>

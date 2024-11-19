@@ -26,6 +26,10 @@ app.get("/savepost", async function (req, res) {
 });
 
 app.get("/newpost", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   res.render("newpost", {});
 });
 
@@ -44,29 +48,6 @@ app.get("/register", async function (req, res) {
 app.get("/impressum", async function (req, res) {
   res.render("impressum", {});
 });
-
-if (!req.session.userid) {
-  res.redirect("/login");
-  return;
-}
-
-app.get("/", async function (req, res) {
-  +  if (!req.session.userid) {
-  +    res.redirect("/login");
-  +    return;
-  +  }
-    const posts = await app.locals.pool.query("SELECT * FROM posts");
-    res.render("start", { posts: posts.rows });
-  });
-
-  const posts = await app.locals.pool.query(
-    "SELECT * FROM posts WHERE user_id = $1", [req.session.userid]
-  );
-
-  await app.locals.pool.query(
-    "INSERT INTO posts (user_id, titel, inhalt) VALUES ($1, $2, $3)",
-    [req.session.userid, req.body.titel, req.body.inhalt]
-  );
 
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
 app.listen(3010, () => {
