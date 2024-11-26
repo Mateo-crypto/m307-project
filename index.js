@@ -1,4 +1,4 @@
-import { createApp } from "./config.js";
+import { createApp, upload } from "./config.js";
 
 const app = createApp({
   user: "fragrant_tree_7413",
@@ -26,11 +26,21 @@ app.get("/savepost", async function (req, res) {
 });
 
 app.get("/newpost", async function (req, res) {
-  if (!req.session.userid) {
-    res.redirect("/login");
-    return;
-  }
   res.render("newpost", {});
+});
+
+app.post("/createpost", upload.single("bild"), async function (req, res) {
+  await app.locals.pool.query(
+    "INSERT INTO posts (bild, name, beschreibung, link, ort) VALUES ($1, $2, $3, $4, $5)",
+    [
+      req.file.filename,
+      req.body.name,
+      req.body.beschreibung,
+      req.body.link,
+      req.body.ort,
+    ]
+  );
+  res.redirect("/");
 });
 
 app.get("/account", async function (req, res) {

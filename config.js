@@ -69,7 +69,7 @@ export function createApp(dbconfig) {
           req.session.userid = result.rows[0].id;
           res.redirect("/");
         } else {
-          res.redirect("/login");
+          res.redirect("/");
         }
       }
     );

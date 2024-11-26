@@ -3,7 +3,6 @@
 
 
 <div class="body">
-    <form action="/createpost" method="post" enctype="multipart/form-data">
     <div class="form-container">
         <!-- Linke Spalte: Bild-Upload -->
         <div class="left-column">
@@ -20,7 +19,7 @@
 
             <!-- Langer Text -->
             <label for="langerText"></label>
-            <textarea id="langerText" name="beschreibung" rows="4" cols="50" required placeholder="Beschreibung max. 500 Zeichen"></textarea>
+            <textarea id="langerText" name="langerText" rows="4" cols="50" required placeholder="Beschreibung max. 500 Zeichen"></textarea>
             <br><br>
 
             <!-- Link -->
@@ -30,14 +29,28 @@
 
             <!-- Google Maps -->
             <label for="map"></label>
-            <input type="text" id="map" name="ort" placeholder="Ort">
-            
+            <input type="text" id="map" name="map" placeholder="Ort">
+            <br><br>
+
+            <!-- Dropdown-Menü -->
+            <label for="optionen"></label>
+            <select id="optionen" name="optionen" required>
+                <option value="" disabled selected>Art des Restaurants</option>
+                <option value="Option1">Italienisch</option>
+                <option value="Option2">Türkisch</option>
+                <option value="Option3">Mexikanisch</option>
+                <option value="Option4">Café</option>
+                <option value="Option5">Spanisch</option>
+                <option value="Option6">Deutsch</option>
+                <option value="Option7">Schweizer Küche</option>
+                <option value="Option8">Französisch</option>
+                <option value="Option9">Burger</option>
+            </select>
             <br><br>
 
             <!-- Absenden Button -->
             <button type="submit">Absenden</button>
         </div>
     </div>
-</form>
 </div>
 {{>footer}}
