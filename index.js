@@ -59,6 +59,14 @@ app.get("/impressum", async function (req, res) {
   res.render("impressum", {});
 });
 
+app.get("/account", async function (req, res) {
+  res.render("account", {});
+
+  const userResult = await app.locals.pool.query(
+    "SELECT email FROM users WHERE id = $1",
+    [req.session.userid]
+  );
+});
 /* Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
 app.listen(3010, () => {
   console.log(`Example app listening at http://localhost:3010`);
