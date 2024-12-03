@@ -17,6 +17,39 @@ header {
   align-items: center;
 }
 
+.headerbild {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10%;
+  overflow: hidden;
+}
+
+footer {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-top: 1px solid #ddd;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-info {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+footer a:hover {
+  text-decoration: underline; /* Unterstreichung bei Hover hinzufügen */
+}
+
 h1 {
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
@@ -210,4 +243,12 @@ button {
 
 input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.account-restaurant-like {
+  margin: 0 30px 30px 30px;
+  display: grid;
+  grid-template-columns: 30% 30%;
+  justify-content: center;
+  gap: 5% 15%;
 }

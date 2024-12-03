@@ -1,7 +1,26 @@
-{{>header}}
+<header>
+  <a href="/newpost"><img
+      class="icon-new-post"
+      src="/uploads/images/new_post-icon.svg"
+      alt="icon"
+    />
+  </a>
+  {{#posts}}
+  <a href="https://y52lz4-3010.csb.app/"><h1>{{name}}</h1></a>
+  <a href="/login"><img
+      class="icon-user"
+      src="/uploads/images/user-icon.png"
+      alt="user"
+    /></a>
+</header>
 <section class="single-post">
-{{#posts}}
+
+  <div>
 <img src="/uploads/{{bild}}"" width="100%%" height="auto" alt="bildessen" class="bild-post">
+<form action="/like/{{id}}" enctype="multipart/form-data" method="POST">
+  <input type="submit" value="Speichern">
+</form>
+</div>
 <div class="information-single-post">
   <h1 class="name-post">{{name}}</h1>
   <p class="beschreibung-post">{{beschreibung}}</p>
@@ -11,3 +30,4 @@
 
 {{/posts}}
 </section>
+{{>footer}}

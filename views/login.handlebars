@@ -1,13 +1,26 @@
-{{>header}}
-<h2>Login</h2>
+<header>
+  <a href="/newpost"><img
+      class="icon-new-post"
+      src="/uploads/images/new_post-icon.svg"
+      alt="icon"
+    />
+  </a>
+  <a href="https://y52lz4-3010.csb.app/"><h1>Login</h1></a>
+  <a href="/login"><img
+      class="icon-user"
+      src="/uploads/images/user-icon.png"
+      alt="user"
+    /></a>
+</header>
 
 <div class="container-login-form">
-<div class="login-form">
-<form action="/login" method="POST">
-  <input name="email" type="text" placeholder="E-Mail"/><br />
-  <input name="passwort" type="password" placeholder="Passwort"/><br />
-  <input type="submit" value="Anmelden" placeholder="Anmelden"/>
-</form>
-<button><a href="/register" class="button">Noch kein Konto? Jetzt registrieren</a></button>
-</div>
+  <div class="login-form">
+    <form action="/login" method="POST">
+      <input name="email" type="text" placeholder="E-Mail" /><br />
+      <input name="passwort" type="password" placeholder="Passwort" /><br />
+      <input type="submit" value="Anmelden" placeholder="Anmelden" />
+    </form>
+    <button><a href="/register" class="button">Noch kein Konto? Jetzt
+        registrieren</a></button>
+  </div>
 </div>

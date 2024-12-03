@@ -43,10 +43,6 @@ app.post("/createpost", upload.single("bild"), async function (req, res) {
   res.redirect("/");
 });
 
-app.get("/account", async function (req, res) {
-  res.render("account", {});
-});
-
 app.get("/login", async function (req, res) {
   res.render("login", {});
 });
@@ -59,17 +55,55 @@ app.get("/impressum", async function (req, res) {
   res.render("impressum", {});
 });
 
-
+app.post("/like/:id", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+  await app.locals.pool.query(
+    "INSERT INTO likes (post_id, user_id) VALUES ($1, $2)",
+    [req.params.id, req.session.userid]
+  );
+  res.redirect(`/post/${req.params.id}`);
+});
 
 /*TEST*/
-
+/*
 app.get("/account", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const userResult = await app.locals.pool.query(
-    "SELECT * FROM users WHERE id = $1",
-    [req.session.userid] 
+    "SELECT vorname FROM users WHERE id = $1",
+    [req.session.userid]
   );
 
-  res.render("account", { user: userResult.rows[0] });
+  const user = userResult.rows[0];
+
+  res.render("account", { user });
+});*/
+/* Account */
+app.get("/account", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+
+  const userResult = await app.locals.pool.query(
+    "SELECT vorname, nachname, email FROM users WHERE id = $1",
+    [req.session.userid]
+  );
+  const user = userResult.rows[0];
+
+  // Fetch posts liked by the logged-in user
+  const likesResult = await app.locals.pool.query(
+    "SELECT posts.* FROM posts INNER JOIN likes ON posts.id = likes.post_id WHERE likes.user_id = $1",
+    [req.session.userid]
+  );
+  const like = likesResult.rows;
+
+  res.render("account", { user, like });
 });
 
 /*TEST*/
