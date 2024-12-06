@@ -13,11 +13,20 @@
     /></a>
 </header>
 
-<div>
-    <p>Welcome, {{user.vorname}}</p>
+<div class="account-grid">
+<div class="account-willkommen">
+    <p>Hallo, {{user.vorname}}</p>
     <p>Deine E-Mail ist: {{user.email}}</p>
 </div>
-<section class="account-restaurant-like">
+<div class="account-information">
+<form action="/account/update-email" method="POST">
+  <label for="email"></label>
+  <input type="email" id="email" name="email" placeholder="Neue E-Mail Adresse" required>
+  <button type="submit">Ändern</button>
+</form>
+</div>
+</div>
+<div class="account-restaurant-like">
 {{#if like}}
 {{#each like}}
 <a href="/post/{{id}}">
@@ -25,10 +34,15 @@
     <h3 class="title-restaurant">{{name}}</h3>
     <img src="/uploads/{{bild}}" width="100%" height="auto" alt="bildessen" class="bild-post">
 </container>
+</a>
 {{/each}}
 {{else}}
-</section>
+</div>
+<div>
 <p>no posts</p>
 {{/if}}
+</div>
 
+<div>
 {{>footer}}
+</div>

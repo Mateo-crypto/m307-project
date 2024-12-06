@@ -64,7 +64,7 @@ app.post("/like/:id", async function (req, res) {
     "INSERT INTO likes (post_id, user_id) VALUES ($1, $2)",
     [req.params.id, req.session.userid]
   );
-  res.redirect(`/post/${req.params.id}`);
+  res.redirect(`/account`);
 });
 
 /*TEST*/
@@ -104,6 +104,45 @@ app.get("/account", async function (req, res) {
   const like = likesResult.rows;
 
   res.render("account", { user, like });
+});
+
+app.post("/account/update-email", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
+
+  const newEmail = req.body.email;
+
+  // Validierung der neuen E-Mail
+  if (!newEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
+    res.status(400).send("Ungültige E-Mail-Adresse.");
+    return;
+  }
+
+  try {
+    // Prüfen, ob die E-Mail bereits existiert
+    const emailCheckResult = await app.locals.pool.query(
+      "SELECT id FROM users WHERE email = $1",
+      [newEmail]
+    );
+
+    if (emailCheckResult.rows.length > 0) {
+      res.status(400).send("Diese E-Mail-Adresse wird bereits verwendet.");
+      return;
+    }
+
+    // E-Mail-Adresse aktualisieren (4. Spalte wird durch die `email`-Spaltenbezeichnung adressiert)
+    await app.locals.pool.query("UPDATE users SET email = $1 WHERE id = $2", [
+      newEmail,
+      req.session.userid,
+    ]);
+
+    res.redirect("/account");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Fehler beim Aktualisieren der E-Mail-Adresse.");
+  }
 });
 
 /*TEST*/

@@ -104,6 +104,14 @@ h3 {
   justify-content: center;
 }
 
+container {
+  transition: transform 0.3s ease; /* Sanfter Übergang beim Transformieren */
+}
+
+container:hover {
+  transform: scale(0.95); /* Verkleinert das Bild um 5% */
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -246,9 +254,38 @@ input[type="submit"]:hover {
 }
 
 .account-restaurant-like {
-  margin: 0 30px 30px 30px;
+  margin: 30px;
   display: grid;
   grid-template-columns: 30% 30%;
   justify-content: center;
   gap: 5% 15%;
+}
+
+.account-grid {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 30% 30%;
+  justify-content: center;
+  gap: 5% 15%;
+}
+
+.account-information,
+.account-willkommen {
+  margin: 10px;
+}
+
+.impressum-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.impressum-text {
+  margin: 30px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.impressum-text h2 {
+  margin: 5% 0 0 0;
 }
