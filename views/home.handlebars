@@ -1,33 +1,56 @@
-<header>
-    <a href="/newpost"><img
+  <header>
+    <a href="/newpost">
+      <img
         class="icon-new-post"
         src="/uploads/images/new_post-icon.svg"
         alt="icon"
       />
     </a>
-    <a href="https://y52lz4-3010.csb.app/"><h1>HolidayRestaurants.com</h1></a>
-    <a href="/login"><img
+    <a href="https://y52lz4-3010.csb.app/">
+      <h1>HolidayRestaurants.com</h1>
+    </a>
+    <a href="/login">
+      <img
         class="icon-user"
         src="/uploads/images/user-icon.png"
         alt="user"
-      /></a>
+      />
+    </a>
   </header>
+
   <div class="headerbild">
-<img src="/uploads/images/headerbild.jpg" alt="">
+    <img src="/uploads/images/headerbild.jpg" alt="" />
   </div>
-  
-<div class="body">
 
+  <!-- Verwende hier besser eine andere Klassenbezeichnung als "body", z.B. "main-content" -->
+  <div class="main-content">
+    <div class="home-restaurant-grid">
+      {{#posts}}
+        <a href="/post/{{id}}">
+          <div class="restaurant-grid">
+            <h3 class="title-restaurant">{{name}}</h3>
+            <img
+              src="/uploads/{{bild}}"
+              width="100%"
+              height="auto"
+              alt="bildessen"
+              class="bild-post"
+            />
+          </div>
+        </a>
+      {{/posts}}
+    </div>
+  </div>
 
-<section class="home-restaurant-grid">
-    {{#posts}}
-    <a href="/post/{{id}}">
-    <container class="restaurant-grid">
-        <h3 class="title-restaurant">{{name}}</h3>
-        <img src="/uploads/{{bild}}" width="100%" height="auto" alt="bildessen" class="bild-post">
-    </container>
-    {{/posts}}
-</section>
-</a>
-</div>
-{{>footer}}
+  <footer>
+    <div class="footer-links">
+      <a href="/account">Account</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+    <div class="footer-info">
+      <p>© 2024 HolidayRestaurants. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+</body>
+</html>

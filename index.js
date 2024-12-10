@@ -21,8 +21,8 @@ app.get("/post/:id", async function (req, res) {
   res.render("post", { posts: posts.rows });
 });
 
-app.get("/savepost", async function (req, res) {
-  res.render("savepost", {});
+app.get("/datenschutz", async function (req, res) {
+  res.render("datenschutz", {});
 });
 
 app.get("/newpost", async function (req, res) {

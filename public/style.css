@@ -31,6 +31,7 @@ footer {
   padding: 20px;
   background-color: #f3f3f3;
   border-top: 1px solid #ddd;
+  position: sticky;
 }
 
 .footer-links {
@@ -66,7 +67,7 @@ h3 {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-.body {
+.main-content {
   margin: 30px;
 }
 
@@ -92,6 +93,10 @@ h3 {
   margin: 10px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease; /* Sanfter Übergang beim Transformieren */
+}
+.restaurant-grid:hover {
+  transform: scale(0.95); /* Verkleinert das Bild um 5% */
 }
 
 .title-restaurant {
@@ -102,14 +107,6 @@ h3 {
   border-style: solid;
   display: flex;
   justify-content: center;
-}
-
-container {
-  transition: transform 0.3s ease; /* Sanfter Übergang beim Transformieren */
-}
-
-container:hover {
-  transform: scale(0.95); /* Verkleinert das Bild um 5% */
 }
 
 a {
@@ -288,4 +285,29 @@ input[type="submit"]:hover {
 
 .impressum-text h2 {
   margin: 5% 0 0 0;
+}
+
+.impressum-info a {
+  text-decoration: underline;
+}
+
+.datenschutz-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.datenschutz-content {
+  margin: 30px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin-top: 2%;
+}
+
+.datenschutz-content h2 {
+  margin: 5% 0% 1% 0;
 }
